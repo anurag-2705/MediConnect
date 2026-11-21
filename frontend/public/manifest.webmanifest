@@ -1,0 +1,15 @@
+{
+  "name": "MediConnect",
+  "short_name": "MediConnect",
+  "description": "Find a doctor and book a clinic or video consultation.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#edf4ed",
+  "theme_color": "#167d72",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
