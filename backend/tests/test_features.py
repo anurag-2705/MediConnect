@@ -1,4 +1,4 @@
-"""Tests for the bug fixes and features added on top of the original booking flow."""
+﻿"""Tests for the bug fixes and features added on top of the original booking flow."""
 
 import logging
 from datetime import date, timedelta
@@ -151,7 +151,7 @@ def test_console_delivery_lets_a_new_patient_verify_without_providers(monkeypatc
             assert signup.status_code == 201, signup.text
             for channel in ("email", "phone"):
                 assert client.post(f"/api/v1/auth/contacts/{channel}/send").status_code == 200
-                code = [line.split("code is ")[1][:6] for line in caplog.text.splitlines() if "code is" in line][-1]
+                code = [line.rsplit("code:", 1)[1].strip()[:6] for line in caplog.text.splitlines() if "verification code:" in line][-1]
                 verified = client.post(f"/api/v1/auth/contacts/{channel}/verify", json={"code": code})
                 assert verified.status_code == 200, verified.text
             assert verified.json()["verification_required"] is False

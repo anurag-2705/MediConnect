@@ -21,6 +21,8 @@ from app.models import GuestChallenge, User
 
 @pytest.fixture
 def twilio_config(monkeypatch):
+    monkeypatch.setenv("APP_ENV", "test")
+    monkeypatch.setenv("DEV_CONSOLE_OTP", "0")
     monkeypatch.setenv("TWILIO_ACCOUNT_SID", "AC" + "1" * 32)
     monkeypatch.setenv("TWILIO_AUTH_TOKEN", "fictional-token")
     monkeypatch.setenv("TWILIO_MESSAGING_SERVICE_SID", "MG" + "2" * 32)
@@ -174,6 +176,8 @@ def test_guest_retries_a_twilio_failure_and_uses_the_code_once(monkeypatch, sms_
 
 @pytest.fixture
 def smtp_account(monkeypatch):
+    monkeypatch.setenv("APP_ENV", "test")
+    monkeypatch.setenv("DEV_CONSOLE_OTP", "0")
     monkeypatch.setenv("OTP_EMAIL_PROVIDER", "smtp")
     monkeypatch.setenv("SMTP_HOST", "smtp.gmail.com")
     monkeypatch.setenv("SMTP_PORT", "587")
