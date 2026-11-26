@@ -149,12 +149,12 @@ def deliver_code(channel: ContactChannel, destination: str, code: str) -> None:
 
     # Development-only OTP delivery
     if app_env == "development" and dev_console_otp:
-        log.warning(
-            "[DEV ONLY] MediConnect %s verification code: %s",
-            channel,
-            code,
-        )
-        return
+    log.warning(
+        "[DEV ONLY] MediConnect %s verification code is %s",
+        channel,
+        code,
+    )
+    return
 
     message = (
         f"Your MediConnect verification code is {code}. "
